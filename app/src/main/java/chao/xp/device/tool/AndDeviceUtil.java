@@ -341,15 +341,15 @@ public class AndDeviceUtil {
         String info = "";
         if (context != null) {
             try {
-                info += "&应用：" + getAppName(context);
-                info += "&版本：" + getVersionName(context);
+                info += "appName=" + getAppName(context);
+                info += "&version=" + getVersionName(context);
             } catch (Exception e) {
             }
         }
 
         try {
-            info += "&品牌：" + getPhoneBrand();
-            info += "&型号：" + getPhoneModel();
+            info += "&brand=" + getPhoneBrand();
+            info += "&model=" + getPhoneModel();
         } catch (Exception e) {
         }
 

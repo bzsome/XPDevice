@@ -1,13 +1,15 @@
-package chao.xp.device;
+package chao.xp.device.hook;
 
 
 import android.telephony.TelephonyManager;
 
+import chao.xp.device.MyConstant;
 import chao.xp.device.tool.MyFileStore;
 import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.*;
 
 public class MainHook implements IXposedHookLoadPackage {
+
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
@@ -16,6 +18,7 @@ public class MainHook implements IXposedHookLoadPackage {
 
         XposedBridge.log("--------device handleLoadPackage");
         XposedBridge.log("目标包名：" + lpparam.packageName);
+        new DeviceHook(lpparam);
         String nowPackageName = this.getClass().getPackage().getName();
 
         if (lpparam.packageName.equals(nowPackageName)) {
