@@ -10,19 +10,17 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  */
 
 public class DeviceHook {
-    public DeviceHook(XC_LoadPackage.LoadPackageParam loadPackageParam) {
-        try {
-            Class<?> classBuild = XposedHelpers.findClass("android.os.Build",
-                    loadPackageParam.classLoader);
+    public DeviceHook(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
 
-            XposedHelpers.setStaticObjectField(classBuild, "SERIAL",
-                    "aabbccdd"); // 串口序列号
+        Class<?> classBuild = XposedHelpers.findClass("android.os.Build",
+                loadPackageParam.classLoader);
 
-            XposedHelpers.findField(android.os.Build.class, "BOARD").set(null, "iPhone");
-            XposedBridge.log("已修改设备信息");
-        } catch (IllegalAccessException e) {
-            System.out.println("error aaaaaaaa");
-            e.printStackTrace();
-        }
+        XposedHelpers.setStaticObjectField(classBuild, "SERIAL",
+                "aabbccdd"); // 串口序列号
+
+        XposedHelpers.findField(android.os.Build.class, "BOARD").set(null, "iPhone");
+        XposedBridge.log("已修改设备信息");
+        XposedHelpers.findField(android.os.Build.class, "MODEL").set(null, "iPhone X");
+        XposedBridge.log("已修改设备信息model");
     }
 }
