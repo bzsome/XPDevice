@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="chao.xp.device.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_res"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="劫持结果" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机真实IMEI：" />
+
+        <TextView
+            android:id="@+id/tv_real"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="imei" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改后的IMEI：" />
+
+        <TextView
+            android:id="@+id/tv_alter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="imei" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edt_imei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入IMEI,至少5位" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置信息" />
+
+        <Button
+            android:id="@+id/btn_alter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="劫持测试" />
+    </LinearLayout>
+
+</LinearLayout>
