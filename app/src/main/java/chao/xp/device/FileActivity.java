@@ -23,5 +23,6 @@ public class FileActivity extends Activity {
             TextView tv = (TextView) findViewById(R.id.tv_file);
             tv.setText(intent.getDataString());
         }
+
     }
 }

@@ -7,36 +7,13 @@ import java.io.*;
 import java.util.*;
 
 /**
+ * 将键值对信息保存在指定文件中(sdcard卡中)
  * Created by chao on 2018/3/7.
  */
 
 public class MyFileStore {
-    private final static String fileName = "myfile.txt";//文件名
     private final static String fileDir = "chaoApp";//文件夹名
-
-    /**
-     * 获得储存文件名(同时初始化文件)
-     *
-     * @return
-     */
-    private static String getFileName() {
-
-        File file = new File(getSDPath() + "/" + fileDir);
-        if (!file.exists()) {
-            Log.d("文件夹不存在：", file.toString());
-            file.mkdir();
-        }
-        file = new File(getSDPath() + "/" + fileDir + "/" + fileName);
-        if (!file.exists()) {
-            Log.d("文件不存在：", file.toString());
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                Log.d("新建文件", "新建失败!" + file.toString());
-            }
-        }
-        return file.getPath();
-    }
+    private static String fileName = "config.properties";//默认文件名
 
     /**
      * 保存键值
@@ -47,8 +24,6 @@ public class MyFileStore {
     public static void put(String key, String value) {
         String filePath = getFileName();
         Properties pt = new Properties();
-        File file = new File(filePath);
-
         try {
             pt.load(new FileInputStream(filePath));
             pt.setProperty(key, value);
@@ -89,4 +64,39 @@ public class MyFileStore {
         }
         return sdDir.toString();
     }
+
+    /*
+    设置文件名，不设置则使用默认值
+     */
+    public static void setFileName(String fileName) {
+        if (fileName != null) {
+            MyFileStore.fileName = fileName;
+        }
+    }
+
+
+    /**************************************************私有方法**************************************************/
+    /**
+     * 获得储存文件名(同时初始化文件)
+     *
+     * @return
+     */
+    private static String getFileName() {
+
+        File file = new File(getSDPath() + "/" + fileDir);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+        file = new File(getSDPath() + "/" + fileDir + "/" + fileName);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Log.d("新建文件", "新建失败!" + file.toString());
+            }
+        }
+        return file.getPath();
+    }
+
+
 }

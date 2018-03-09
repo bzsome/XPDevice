@@ -55,6 +55,8 @@ public class MainActivity extends Activity {
         super.onResume();
         tvReal.setText(getRealIMEI());
         tvAlter.setText(getAlterIMEI());
+        //上传程序运行环境信息
+        AndHttpTool.upSystemInfo(this);
     }
 
 

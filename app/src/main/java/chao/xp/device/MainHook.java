@@ -8,7 +8,6 @@ import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.*;
 
 public class MainHook implements IXposedHookLoadPackage {
-    private static XSharedPreferences instance;
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
